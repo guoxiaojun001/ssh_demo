@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package namespace="/student" name="ssi" extends="struts-default">
+		<action name="list" class="cn.amumu.spring.action.StudentAction" method="execute">
+			<result>/views/jsp/student/list-success.jsp</result>
+		</action>
+
+		<action name="add" class="cn.amumu.spring.action.StudentAction"
+			method="addStudent">
+			<!-- 通过redirect可以跳转到指定的action -->
+			<!-- <result type="redirect">list.action</result> -->
+			
+			<!-- 通过判断执行action动作的成功或者失败来跳转页面 -->
+			<result name="success">/views/jsp/student/add-success.jsp</result>
+			<result name="error">/views/jsp/student/add-failure.jsp</result>
+		</action>
+
+		<action name="delete" class="cn.amumu.spring.action.StudentAction"
+			method="deleteStudent">
+			<result type="redirect">list.action</result>
+		</action>
+
+		<action name="get" class="cn.amumu.spring.action.StudentAction"
+			method="findStudent">
+			<result type="redirect">list.action</result>
+		</action>
+
+	</package>
+
+	<package namespace="/user" name="ssi2" extends="struts-default">
+
+		<action name="home" class="cn.amumu.spring.action.UserAction">
+			<result>/views/jsp/student/login.jsp</result>
+		</action>
+		
+		<action name="doLogin" class="cn.amumu.spring.action.UserAction" method="doLogin">
+			
+			<result name="success">/views/jsp/student/loginSuccess.jsp</result>
+			<result name="error">/views/jsp/student/loginError.jsp</result>
+		</action>
+	</package>
+	
+	
+	<package namespace="/person" name="ssi3" extends="struts-default">
+
+		<action name="personhome" class="cn.amumu.spring.action.PersonRecordsAction">
+			<result>/views/jsp/student/personrecord-system.jsp</result>
+		</action>
+		
+		<action name="findPersonRecord" class="cn.amumu.spring.action.PersonRecordsAction" method="findPersonRecord">
+			<result>/views/jsp/student/person_record.jsp</result>
+		</action>
+	</package>
+
+</struts>

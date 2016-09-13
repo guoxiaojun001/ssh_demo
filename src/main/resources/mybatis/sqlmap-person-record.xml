@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.amumu.spring.dao.PersonRecordsDao">
+
+<resultMap id="BaseResultMap" type="cn.amumu.spring.orm.PersonRecord">
+		<result column="age" property="age" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="id_foreign" property="id_foreign" jdbcType="INTEGER" />
+		<result column="msg" property="msg" jdbcType="VARCHAR" />
+		<result column="score" property="score" jdbcType="VARCHAR" />
+	</resultMap>
+
+
+	<select id="findByFKey" parameterType="int" resultMap="BaseResultMap">
+		select	persons.name ,records.msg 
+		from persons,records
+		where
+		persons.id_foreign=records.id_r and persons.id_foreign=#{id_foreign}
+		
+	</select>
+
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.amumu.spring.dao.UserDao">
+  <select id="findById" parameterType="int" resultType="User">
+    select * from user where id = #{id}
+  </select>
+  
+  <insert id="save" parameterType="User" useGeneratedKeys="true">
+  	insert into user(name,pwd) values(#{name},#{pwd})
+  </insert>
+  
+  <select id="findAll" resultType="User">
+  	select * from user
+  </select>
+  
+  <delete id="delete" parameterType="int">
+  	delete from user where id = #{id}
+  </delete>
+  
+  <select id="findByName" parameterType="String" resultType="User">
+    select * from user where name = #{name}
+  </select>
+
+</mapper>
